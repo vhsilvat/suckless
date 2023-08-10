@@ -6,9 +6,9 @@ pacmd list-sinks |
     awk '
         BEGIN {
             ICONsn = "" # headphone unplugged, not muted
-            ICONsm = "" # headphone unplugged, muted
+            ICONsm = "" # headphone unplugged, muted
             ICONhn = "" # headphone plugged in, not muted
-            ICONhm = "" # headphone plugged in, muted
+            ICONhm = "" # headphone plugged in, muted
         }
         {
             if (f) {
