@@ -15,6 +15,6 @@
 #fi
 
 ram="$(free -h | awk '/^Mem.:/ { print $3 "|" $2}' | sed s/i//g)"
-i=""
+i="󰍛"
 
 printf "$i $ram"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
 backlight="$(xbacklight | sed 's/\..*//')"
-i=""
+i="󰃟"
 
 printf "%s%%\n" "$i $backlight"
