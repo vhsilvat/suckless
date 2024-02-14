@@ -1,7 +1,7 @@
 	/* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -19,7 +19,7 @@ static char normbgcolor[]           = "#282828";
 static char normbordercolor[]       = "#282828";
 static char selfgcolor[]            = "#458588";
 static char selbgcolor[]            = "#282828";
-static char selbordercolor[]        = "#282828";
+static char selbordercolor[]        = "#ebdbb2";
 static char titlefgcolor[]          = "#98971a";
 static char titlebgcolor[]          = "#282828";
 static char titlebordercolor[]      = "#282828";
@@ -28,7 +28,7 @@ static char *colors[][3] = {
         /*                fg            bg            border           */
         [SchemeNorm]  = { normfgcolor,  normbgcolor,  normbordercolor  },
         [SchemeSel]   = { selfgcolor,   selbgcolor,   selbordercolor   },
-	[SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
+	      [SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
 };
 
 /* tagging */
@@ -109,9 +109,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	{ 0,            		XK_Print,  spawn,	   {.v = scrotcmd } },
-	{ ShiftMask,    		XK_Print,  spawn,	   {.v = scrotfocusedcmd } },
-	{ ControlMask,  		XK_Print,  spawn,      	   SHCMD("sleep 1s;scrot --select") },
+	{ 0,            		            XK_Print,  spawn,	         SHCMD("maim --hidecursor $HOME/pictures/screenshots/$(date +%s).png") },
+	{ ShiftMask,    		            XK_Print,  spawn,	         SHCMD("maim -i $(xdotool getactivewindow) $HOME/pictures/screenshots/$(date +%s).png") },
+	{ ControlMask,  		            XK_Print,  spawn,      	   SHCMD("maim --select $HOME/pictures/screenshots/$(date +%s).png") },
+  { ControlMask|ShiftMask,  		  XK_Print,  spawn,      	   SHCMD("maim --select /dev/stdout | xclip -selection clipboard -t image/png -i") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
