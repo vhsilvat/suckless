@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 10;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
@@ -24,25 +24,26 @@ static char titlefgcolor[]          = "#98971a";
 static char titlebgcolor[]          = "#282828";
 static char titlebordercolor[]      = "#282828";
 
-static char *colors[][3] = {
+static const char *colors[][3] = {
         /*                fg            bg            border           */
         [SchemeNorm]  = { normfgcolor,  normbgcolor,  normbordercolor  },
         [SchemeSel]   = { selfgcolor,   selbgcolor,   selbordercolor   },
-	      [SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
+        [SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Barrier",  NULL,       NULL,       1 << 8,       1,           -1 },
+	/* class              instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",             NULL,       NULL,       0,            1,           -1 },
+	{ "Firefox",          NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "Barrier",          NULL,       NULL,       1 << 4,       1,           -1 },
+	{ "Signal",           NULL,       NULL,       1 << 4,       1,            0 },
 };
 
 /* layout(s) */
@@ -52,9 +53,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",        tile },     /* first entry is default */
+	{ "",        tile },     /* first entry is default */
 	{ "",        NULL },     /* no layout function means floating behavior */
-	{ "[M]",      monocle },  /* zoom current window */
+	{ "",      monocle },  /* zoom current window */
 };
 
 /* key definitions */
@@ -76,8 +77,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
-static const char *scrotcmd[]  = { "scrot", "-t", "25", NULL };
-static const char *scrotfocusedcmd[]  = { "scrot", "--focused", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

@@ -1,5 +1,5 @@
 /* macro for conveniently specifying pathu and pathc below */
-#define PATH(name)                      "<path to the folder containing block scripts>/"name
+#define PATH(name)                      "/home/victor/.config/suckless/dwmblocks/blocks/"name
 
 /* buffer size for capturing output of the programs used for updating blocks */
 #define CMDOUTLENGTH                    50
@@ -44,10 +44,10 @@ static const char delimiter[] = { ' ', ' ', ' ', DELIMITERENDCHAR };
 static Block blocks[] = {
 /*      pathu                           pathc                           interval        signal  */
       	{ PATH("ram.sh"),               PATH("ram_button.sh"),          15,             4},
-	      { PATH("backlight.sh"),         PATH("backlight_button.sh"),    0,              8},
-	      { PATH("volume.sh"),            PATH("volume_button.sh"),       0,              9},	
-	      { PATH("net.sh"),          	  	PATH("net_button.sh"),       		30,             5},
-        { PATH("battery.sh"),           PATH("battery_button.sh"),      60,             2},
-	      { PATH("clock.sh"),             PATH("clock_button.sh"),        1,              1},
-	      { NULL } /* just to mark the end of the array */
+      	{ PATH("backlight.sh"),         PATH("backlight_button.sh"),    0,              8},
+      	{ PATH("volume.sh"),            PATH("volume_button.sh"),       0,              9},
+      	{ PATH("net.sh"),               PATH("net_button.sh"),          60,             5},
+      	{ PATH("battery.sh"),           PATH("battery_button.sh"),      60,             2},
+      	{ PATH("clock.sh"),             PATH("clock_button.sh"),        60,             1},
+      	{ NULL } /* just to mark the end of the array */
 };
