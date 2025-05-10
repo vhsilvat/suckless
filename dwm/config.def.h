@@ -44,6 +44,7 @@ static const Rule rules[] = {
 	{ "Firefox",          NULL,       NULL,       1 << 4,       0,           -1 },
 	{ "Barrier",          NULL,       NULL,       1 << 4,       1,           -1 },
 	{ "Signal",           NULL,       NULL,       1 << 4,       1,            0 },
+	{ "Webcam",           NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -55,7 +56,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "",        tile },     /* first entry is default */
 	{ "",        NULL },     /* no layout function means floating behavior */
-	{ "",      monocle },  /* zoom current window */
+	{ "",      monocle },  /* zoom current window */
 };
 
 /* key definitions */
